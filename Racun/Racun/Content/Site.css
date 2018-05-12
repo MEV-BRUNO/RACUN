@@ -22,3 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.form-page {
+    max-width: 340px;
+}
+
+.page-title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.title-red {
+    color: darkred;
+}
+
+.title-blue {
+    color: darkblue;
+}
