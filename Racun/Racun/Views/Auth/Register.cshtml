@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<div class="form-page">
+    <h2 class="page-title"><span class="title-red">PAUP</span> <span class="title-blue">projekt</span></h2>
+    <h3><span class="label label-primary">Ispunite podatke za registraciju</span></h3>
+    <form>
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ime">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Prezime">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Korisničko ime">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Vaša e-mail adresa">
+        </div>
+        <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Lozinka">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ponovite lozinku">
+        </div>
+
+        <button type="submit" class="btn btn-success">Registracija</button>
+
+    </form>
+
+    <ul class="nav nav-pills">
+        <li role="presentation">@Html.ActionLink("Prijava", "Login", "Auth")</li>
+        <li role="presentation">@Html.ActionLink("Zaboravio lozinku", "ForgotPassword", "Auth")</li>
+        <li role="presentation" class="disabled"><a href="#">Registracija</a></li>
+    </ul>
+</div>
+

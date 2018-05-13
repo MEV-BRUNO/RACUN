@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+<div class="form-page">
+    <h2 class="page-title"><span class="title-red">PAUP</span> <span class="title-blue">projekt</span></h2>
+    <h3><span class="label label-primary">Vaše korisničko ime i lozinka</span></h3>
+    <form>
+        <div class="form-group">
+
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Korisničko ime">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Lozinka">
+        </div>
+
+
+        <button type="submit" class="btn btn-danger">Prijava</button>
+
+    </form>
+
+    <ul class="nav nav-pills">
+        <li role="presentation" class="disabled"><a href="#">Prijava</a></li>
+        <li role="presentation">@Html.ActionLink("Zaboravio lozinku", "ForgotPassword", "Auth")</li>
+        <li role="presentation">@Html.ActionLink("Registracija", "Register", "Auth")</li>
+    </ul>
+</div>
