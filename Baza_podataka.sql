@@ -22,7 +22,7 @@ USE `baza podataka`;
 DROP TABLE IF EXISTS `korisnik`;
 
 CREATE TABLE `korisnik` (
-  `id_korisnik` int(11) NOT NULL,
+  `id_korisnik` int(11) NOT NULL AUTO_INCREMENT ,
   `ime+prezime` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `email` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `lozinka` char(10) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE `korisnik` (
 DROP TABLE IF EXISTS `kupac`;
 
 CREATE TABLE `kupac` (
-  `id_kupac` int(11) NOT NULL,
+  `id_kupac` int(11) NOT NULL AUTO_INCREMENT ,
   `naziv` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `adresa` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `grad` varchar(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
@@ -60,7 +60,7 @@ CREATE TABLE `kupac` (
 DROP TABLE IF EXISTS `poduzece`;
 
 CREATE TABLE `poduzece` (
-  `id_poduzece` int(11) NOT NULL,
+  `id_poduzece` int(11) NOT NULL AUTO_INCREMENT,
   `naziv` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `adresa` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `grad` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `poduzece` (
 DROP TABLE IF EXISTS `racun`;
 
 CREATE TABLE `racun` (
-  `id_racun` int(11) NOT NULL,
+  `id_racun` int(11) NOT NULL AUTO_INCREMENT ,
   `datum` datetime DEFAULT NULL,
   `id_poduzece` int(11) DEFAULT NULL,
   `id_korisnik` int(11) DEFAULT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE `racun` (
 DROP TABLE IF EXISTS `racun_stavka`;
 
 CREATE TABLE `racun_stavka` (
-  `id_racun` int(11) NOT NULL,
+  `id_racun` int(11) NOT NULL AUTO_INCREMENT ,
   `id_usluga` int(11) NOT NULL,
   `kolicina` mediumint(9) DEFAULT NULL,
   `cijena` float DEFAULT NULL,
@@ -144,7 +144,7 @@ CREATE TABLE `sistem` (
 DROP TABLE IF EXISTS `usluge`;
 
 CREATE TABLE `usluge` (
-  `id_usluga` int(11) NOT NULL,
+  `id_usluga` int(11) NOT NULL AUTO_INCREMENT,
    `id_poduzece`int (11) NOT NULL
   `naziv` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `cijena` float DEFAULT NULL,
