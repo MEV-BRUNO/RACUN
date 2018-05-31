@@ -2,7 +2,8 @@
 SQLyog Community v8.61 
 MySQL - 5.5.5-10.1.31-MariaDB : Database - baza podataka
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -26,10 +27,9 @@ CREATE TABLE `korisnik` (
   `email` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `lozinka` char(10) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `licenca_datum_trajanja_pristupa` date DEFAULT NULL,
-  `vrsta(SA)` tinyint(1) DEFAULT NULL,
-  `vrsta(Korisnik)` tinyint(4) DEFAULT NULL,
+  `vrsta` tinyint(8) DEFAULT NULL,
   `id_poduzece` int(20) DEFAULT NULL,
-  `aktivan(da/ne)` char(5) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
+  `aktivan(DA/NE)` char(5) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `aktiv_link` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   PRIMARY KEY (`id_korisnik`),
   KEY `fk_korisnik` (`id_poduzece`),
@@ -65,16 +65,16 @@ CREATE TABLE `poduzece` (
   `adresa` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `grad` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `drzava` char(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `tel` int(11) DEFAULT NULL,
-  `mob` int(11) DEFAULT NULL,
+  `tel` varchar (15) DEFAULT NULL,
+  `mob` varchar(15) DEFAULT NULL,
   `email` varchar(30) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `OIB` char(11) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `odgovorna_osoba` varchar(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `ziro_racun` varchar(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `banka` char(30) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `pdv` float DEFAULT NULL,
-  `biljeska` char(200) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
-  `pecat` blob,
+  `biljeska` text COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
+  `pecat` link,
   PRIMARY KEY (`id_poduzece`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
@@ -145,10 +145,12 @@ DROP TABLE IF EXISTS `usluge`;
 
 CREATE TABLE `usluge` (
   `id_usluga` int(11) NOT NULL,
+   `id_poduzece`int (11) NOT NULL
   `naziv` varchar(50) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   `cijena` float DEFAULT NULL,
-  `mj(mjerna jedinica)` varchar(20) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
+  `mj(mjerna jedinica)` char(10) COLLATE utf8_croatian_mysql561_ci DEFAULT NULL,
   PRIMARY KEY (`id_usluga`)
+  CONSTRAINT `fk_sistem_poduzece` FOREIGN KEY (`id_poduzece`) REFERENCES `poduzece` (`id_poduzece`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_mysql561_ci;
 
 /*Data for the table `usluge` */
