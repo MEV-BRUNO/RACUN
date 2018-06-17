@@ -23,13 +23,13 @@ DROP TABLE IF EXISTS `korisnik`;
 
 CREATE TABLE `korisnik` (
   `id_korisnik` INT(11) NOT NULL AUTO_INCREMENT ,
-  `ime+prezime` VARCHAR(50) DEFAULT NULL,
+  `ime_prezime` VARCHAR(50) DEFAULT NULL,
   `email` CHAR(20) DEFAULT NULL,
   `lozinka` CHAR(10) DEFAULT NULL,
   `licenca_datum_trajanja_pristupa` DATE DEFAULT NULL,
   `vrsta` TINYINT(8) DEFAULT NULL,
   `id_poduzece` INT(20) DEFAULT NULL,
-  `aktivan(DA/NE)` CHAR(5) DEFAULT NULL,
+  `aktivan` TINYINT(1) DEFAULT NULL,
   `aktiv_link` CHAR(20) DEFAULT NULL,
   PRIMARY KEY (`id_korisnik`),
   KEY `fk_korisnik` (`id_poduzece`),
@@ -148,7 +148,7 @@ CREATE TABLE `usluge` (
    `id_poduzece`INT (11) NOT NULL,
   `naziv` VARCHAR(50) DEFAULT NULL,
   `cijena` FLOAT DEFAULT NULL,
-  `mj(mjerna jedinica)` CHAR(10) DEFAULT NULL,
+  `mjerna_jedinica` CHAR(10) DEFAULT NULL,
   PRIMARY KEY (`id_usluga`),
   CONSTRAINT `fk_usluga_poduzece` FOREIGN KEY (`id_poduzece`) REFERENCES `poduzece` (`id_poduzece`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
