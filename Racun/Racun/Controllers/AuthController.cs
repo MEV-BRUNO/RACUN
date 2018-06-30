@@ -5,11 +5,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.UI;
+using Microsoft.Ajax.Utilities;
 using Racun.DbCtx;
 using Racun.Models;
 
 namespace Racun.Controllers
 {
+    public class MySession
+    {
+
+        private static readonly DatabaseContext _dbContext = new DatabaseContext();
+        public static User CurrentUser
+        {
+            get
+            {
+                var userId = HttpContext.Current.Session["user_id"];
+    
+                if (userId != null)
+                {
+                    var uID = (int)userId;
+                    var user =_dbContext.users.SingleOrDefault(u => u.id_korisnik == uID);
+                    return user;
+                }
+
+                return null;
+            }
+        }
+        
+        
+    }
+    
     public class AuthController : Controller
     {
         
@@ -23,7 +48,19 @@ namespace Racun.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Login(FormCollection collection)
         {
-            return View();
+            var email = collection["email"];
+            var password = collection["password"];
+            var user =_dbContext.users.SingleOrDefault(u => u.email == email && u.lozinka == password);
+            if (user==null)
+            {
+                ModelState.AddModelError("email", "Korisnik ne postoji ili je lozinka pogrešna.");
+                return View();
+            }
+            
+            
+            Session["user_id"] = user.id_korisnik;
+            Session.Timeout = 120;
+            return RedirectToAction("Edit", "CompanyData");
         }
 
         public ActionResult Register()
@@ -38,7 +75,6 @@ namespace Racun.Controllers
         {                
             var name = collection["name"];
             var surname = collection["surname"];
-            var username = collection["username"];
             var email = collection["email"];
             var password = collection["password"];
             var passwordRepeat = collection["passwordRepeat"];
@@ -68,7 +104,7 @@ namespace Racun.Controllers
             _dbContext.users.Add(user);
             _dbContext.SaveChanges();
 
-            return View();
+            return RedirectToAction("Login");
         }
 
         public ActionResult ForgotPassword()
