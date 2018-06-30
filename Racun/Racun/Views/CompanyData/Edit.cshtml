@@ -1,4 +1,4 @@
-﻿
+﻿@model Racun.Models.Company
 @{
     ViewBag.Title = "Edit";
 }
@@ -13,44 +13,47 @@
             </div>
         }
         <div class="form-group">
-
-            <input type="text" class="form-control" name="companyName" placeholder="Naziv poduzeća">
+          
+            <input type="text" class="form-control" name="companyName" placeholder="Naziv poduzeća" value="@Model.naziv" required="required">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="adress" placeholder="Adresa">
+            <input type="text" class="form-control" name="address" placeholder="Adresa" value="@Model.adresa">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="town" placeholder="Grad">
+            <input type="text" class="form-control" name="town" placeholder="Grad" value="@Model.grad">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="phone" placeholder="Telefon">
+            <input type="text" class="form-control" name="country" placeholder="Država" value="@Model.drzava">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="cellphone" placeholder="Mobitel">
+            <input type="text" class="form-control" name="phone" placeholder="Telefon" value="@Model.tel">
         </div>
         <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="E-mail adresa">
+            <input type="text" class="form-control" name="cellphone" placeholder="Mobitel" value="@Model.mob">
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" name="oib" placeholder="OIB">
+            <input type="email" class="form-control" name="email" placeholder="E-mail adresa" value="@Model.email">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="personInCharge" placeholder="Odgovorna osoba">
+            <input type="number" class="form-control" name="oib" placeholder="OIB" value="@Model.oib">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="bankAccount" placeholder="Žiro račun">
+            <input type="text" class="form-control" name="personInCharge" placeholder="Odgovorna osoba" value="@Model.odgovorna_osoba">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="bank" placeholder="Banka">
+            <input type="text" class="form-control" name="bankAccount" placeholder="Žiro račun" value="@Model.ziro_racun">
         </div>
         <div class="form-group">
-            <input type="number" class="form-control" name="tax" placeholder="PDV">
+            <input type="text" class="form-control" name="bank" placeholder="Banka" value="@Model.banka">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="note" placeholder="Bilješka">
+            <input type="number" class="form-control" name="tax" placeholder="PDV" value="@Model.pdv">
         </div>
         <div class="form-group">
-            <input type="text" class="form-control" name="stamp" placeholder="Pečat">
+            <input type="text" class="form-control" name="note" placeholder="Bilješka" value="@Model.biljeska">
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" name="stamp" placeholder="Pečat" value="@Model.pecat">
         </div>
 
 
