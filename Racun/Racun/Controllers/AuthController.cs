@@ -34,8 +34,7 @@ namespace Racun.Controllers
         
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Register(FormCollection collection)
-        {    
-            
+        {                
             var company = new Company {naziv = "Test company"};
             _dbContext.companies.Add(company);
             _dbContext.SaveChanges();
