@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using Racun.DbCtx;
 using Racun.Models;
 
@@ -35,17 +36,30 @@ namespace Racun.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Register(FormCollection collection)
         {                
-            var company = new Company {naziv = "Test company"};
+            var name = collection["name"];
+            var surname = collection["surname"];
+            var username = collection["username"];
+            var email = collection["email"];
+            var password = collection["password"];
+            var passwordRepeat = collection["passwordRepeat"];
+
+            if (!password.Equals(passwordRepeat))
+            {
+                ModelState.AddModelError("password", "Lozinka se ne poklapa");
+                return View();
+            }
+            
+            var company = new Company {naziv = name+" "+surname+" Company"};
             _dbContext.companies.Add(company);
             _dbContext.SaveChanges();
-            
+
             var user = new User
             {
                 id_poduzece = company.id_poduzece,
-                ime_prezime = "Tvrtko Tvrtkic",
-                email = "tvrtko@example.com",
+                ime_prezime = name+" "+surname,
+                email = email,
                 licenca_datum_trajanja_pristupa = DateTime.Today,
-                lozinka = "lozinka",
+                lozinka = password,
                 vrsta = "homo sapiens",
                 aktivan = true,
                 aktiv_link = "huh"
