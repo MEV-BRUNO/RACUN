@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Web.Services.Description;
 using Racun.Models;
 
 namespace Racun.DbCtx
@@ -9,5 +10,8 @@ namespace Racun.DbCtx
         public DbSet<User> users { get; set; }
         
         public DbSet<Company> companies { get; set; }
+        
+        //public DbSet<Service> services { get; set; }
+
     }
 }
