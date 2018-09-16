@@ -11,7 +11,7 @@ namespace Racun.Controllers
         // GET
         public ActionResult Edit()
         {
-            var companyId = MySession.CurrentUser.id_poduzece;
+            var companyId = 0;
             var company = _dbContext.companies.First(c => c.id_poduzece == companyId);
             return View(company);
         }
@@ -20,7 +20,7 @@ namespace Racun.Controllers
         public ActionResult Edit(FormCollection collection)
         {
             
-            var companyId = MySession.CurrentUser.id_poduzece;
+            var companyId = 0;
             var company = _dbContext.companies.First(c => c.id_poduzece == companyId);
 
             company.naziv = collection["companyName"];

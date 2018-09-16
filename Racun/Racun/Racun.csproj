@@ -185,7 +185,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Buyer.cs" />
     <Compile Include="Models\Receipt.cs" />
     <Compile Include="Models\ReceiptItem.cs" />
     <Compile Include="Models\Service.cs" />
@@ -219,8 +218,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Views\CompanyData\Edit.cshtml" />
-    <Content Include="Views\Service\Create.cshtml" />
-    <Content Include="Views\Service\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

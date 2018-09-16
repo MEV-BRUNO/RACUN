@@ -48,8 +48,6 @@ namespace Racun.Models
         [Display(Name = "Aktiv link")]
         public string aktiv_link { get; set; }
 
-        [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
-        [Display(Name = "ID poduzeće")]
-        public int id_poduzece { get; set; }
+
     }
 }

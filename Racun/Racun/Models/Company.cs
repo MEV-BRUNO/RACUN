@@ -13,19 +13,19 @@ namespace Racun.Models
 
         [Display(Name = "Naziv")]
         public string naziv { get; set; }
-        
+
         [Display(Name = "Adresa")]
         public string adresa { get; set; }
 
         [Display(Name = "Grad")]
         public string grad { get; set; }
-        
+
         [Display(Name = "Drzava")]
         public string drzava { get; set; }
-        
+
         [Display(Name = "Telefon")]
         public string tel { get; set; }
-        
+
         [Display(Name = "Mobitel")]
         public string mob { get; set; }
 

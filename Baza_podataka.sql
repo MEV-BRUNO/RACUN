@@ -28,16 +28,28 @@ CREATE TABLE `korisnik` (
   `lozinka` CHAR(10) DEFAULT NULL,
   `licenca_datum_trajanja_pristupa` DATE DEFAULT NULL,
   `vrsta` TINYINT(8) DEFAULT NULL,
-  `id_poduzece` INT(20) NOT NULL,
   `aktivan` TINYINT(1) DEFAULT NULL,
   `aktiv_link` CHAR(20) DEFAULT NULL,
-  PRIMARY KEY (`id_korisnik`),
-  KEY `fk_korisnik` (`id_poduzece`),
-  CONSTRAINT `fk_korisnik` FOREIGN KEY (`id_poduzece`) REFERENCES `poduzece` (`id_poduzece`),
-  CONSTRAINT `fk_korisnik_poduzece` FOREIGN KEY (`id_poduzece`) REFERENCES `poduzece` (`id_poduzece`)
+  PRIMARY KEY (`id_korisnik`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `korisnik` */
+
+/*Table structure for table `kupac` */
+
+DROP TABLE IF EXISTS `kupac`;
+
+CREATE TABLE `kupac` (
+  `id_kupac` INT(11) NOT NULL AUTO_INCREMENT ,
+  `naziv` VARCHAR(50) DEFAULT NULL,
+  `adresa` VARCHAR(50) DEFAULT NULL,
+  `grad` VARCHAR(20) DEFAULT NULL,
+  `drzava` VARCHAR(20) DEFAULT NULL,
+  `OIB` CHAR(11) DEFAULT NULL,
+  PRIMARY KEY (`id_kupac`)
+) ENGINE=INNODB DEFAULT CHARSET=utf8;
+
+/*Data for the table `kupac` */
 
 /*Table structure for table `poduzece` */
 
@@ -45,7 +57,6 @@ DROP TABLE IF EXISTS `poduzece`;
 
 CREATE TABLE `poduzece` (
   `id_poduzece` INT(11) NOT NULL AUTO_INCREMENT,
-  `id_korisnik` INT(11) NOT NULL,
   `naziv` VARCHAR(50) DEFAULT NULL,
   `adresa` VARCHAR(50) DEFAULT NULL,
   `grad` CHAR(20) DEFAULT NULL,
@@ -60,8 +71,7 @@ CREATE TABLE `poduzece` (
   `pdv` FLOAT DEFAULT NULL,
   `biljeska` TEXT DEFAULT NULL,
   `pecat` VARCHAR(50) DEFAULT NULL,
-  PRIMARY KEY (`id_poduzece`),
-CONSTRAINT `fk_poduzece` FOREIGN KEY (`id_korisnik`) REFERENCES `korisnik` (`id_korisnik`)
+  PRIMARY KEY (`id_poduzece`)
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `poduzece` */
