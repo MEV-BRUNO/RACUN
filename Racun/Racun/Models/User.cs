@@ -47,6 +47,7 @@ namespace Racun.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "{0} je obavezan podatak")]
         [Display(Name = "Aktiv link")]
         public string aktiv_link { get; set; }
+        public int id_poduzece { get; set; }
 
 
     }

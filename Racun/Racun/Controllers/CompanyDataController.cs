@@ -9,9 +9,9 @@ namespace Racun.Controllers
         private readonly DatabaseContext _dbContext = new DatabaseContext();
         
         // GET
-        public ActionResult Edit()
+        public ActionResult Edit(int id)
         {
-            var companyId = 0;
+            var companyId = id;
             var company = _dbContext.companies.First(c => c.id_poduzece == companyId);
             return View(company);
         }
