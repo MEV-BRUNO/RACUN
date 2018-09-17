@@ -6,35 +6,35 @@
 <div class="jumbotron">
     <h4>Pregled upisanih poduzeća, uređivanje upisanih poduzeća i upis novih.</h4>
 </div>
-
+<input type="button" class="btn btn-danger" value="Upis novog poduzeća" onclick="location.href='@Url.Action("New", "CompanyData")'" />
 <table class="table table-bordered table-hover" id="dataTable">
     <thead>
-		<tr>
-			<td class="col-lg-1">#</td>
-			<td class="col-lg-3">Naziv poduzeća</td>
-			<td class="col-lg-3">E-mail adresa</td>
-			<td class="col-lg-2">Odgovorna osoba</td>
-			<td class="col-lg-2 text-right">Akcija</td>
-		</tr>
+        <tr>
+            <td class="col-lg-1">#</td>
+            <td class="col-lg-3">Naziv poduzeća</td>
+            <td class="col-lg-3">E-mail adresa</td>
+            <td class="col-lg-2">Odgovorna osoba</td>
+            <td class="col-lg-2 text-right">Akcija</td>
+        </tr>
     </thead>
     <tbody>
-		@{int i = 1;
-        foreach (var item in Model)
-		{
-			<tr>
-				<td>@i</td>
-				<td>@item.naziv</td>
-				<td>@item.email</td>
-				<td>@item.odgovorna_osoba</td>
-                <td>
-                    <div class="pull-right">
-						<button class="btn btn-default btn-xs" Briši" onclick ="location.href='@Url.Action("Edit", "CompanyData",new { id = item.id_poduzece})'">Uredi</button>
-						<button class="btn btn-danger btn-xs" onclick ="location.href='@Url.Action("Delete", "CompanyData",new { id = item.id_poduzece})'">Briši</button>
-                    </div>
-                </td>
-            </tr>
-				i++;
-			}
-		}
+        @{int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.naziv</td>
+                    <td>@item.email</td>
+                    <td>@item.odgovorna_osoba</td>
+                    <td>
+                        <div class="pull-right">
+                            <button class="btn btn-default btn-xs"  onclick="location.href='@Url.Action("Edit", "CompanyData",new { id = item.id_poduzece})'">Uredi</button>
+                            <button class="btn btn-danger btn-xs" onclick="location.href='@Url.Action("Delete", "CompanyData",new { id = item.id_poduzece})'">Briši</button>
+                        </div>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
     </tbody>
 </table>
