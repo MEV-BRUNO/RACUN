@@ -1,45 +1,40 @@
-﻿@model Racun.Models.Company
+﻿@model List<Racun.Models.Company>
 @{
     ViewBag.Title = "Poduzeca";
 }
 
 <div class="jumbotron">
-    <h1>Pregled upisanih poduzeća, uređivanje upisanih poduzeća i upis novih.</h1>
+    <h4>Pregled upisanih poduzeća, uređivanje upisanih poduzeća i upis novih.</h4>
 </div>
 
 <table class="table table-bordered table-hover" id="dataTable">
     <thead>
-        <tr>
-            <td class="col-lg-1">#</td>
-            <td class="col-lg-9">Naziv poduzeća</td>
-            <td class="col-lg-9">Adresa</td>
-            <td class="col-lg-9">Grad</td>
-            <td class="col-lg-9">Država</td>
-            <td class="col-lg-9">Telefon</td>
-            <td class="col-lg-9">Mobitel</td>
-            <td class="col-lg-9">E-mail adresa</td>
-            <td class="col-lg-9">OIB</td>
-            <td class="col-lg-9">Odgovorna osoba</td>
-            <td class="col-lg-9">Žiro račun</td>
-            <td class="col-lg-9">Banka</td>
-            <td class="col-lg-9">PDV</td>
-            <td class="col-lg-9">Bilješka</td>
-            <td class="col-lg-9">Pečat</td>
-        </tr>
+		<tr>
+			<td class="col-lg-1">#</td>
+			<td class="col-lg-3">Naziv poduzeća</td>
+			<td class="col-lg-3">E-mail adresa</td>
+			<td class="col-lg-2">Odgovorna osoba</td>
+			<td class="col-lg-2 text-right">Akcija</td>
+		</tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Company)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.Red_br)</td>
-                <td>@Html.DisplayFor(modelItem => item.Naziv)</td>
+		@{int i = 1;
+        foreach (var item in Model)
+		{
+			<tr>
+				<td>@i</td>
+				<td>@item.naziv</td>
+				<td>@item.email</td>
+				<td>@item.odgovorna_osoba</td>
                 <td>
                     <div class="pull-right">
-                        <input type="button" class="btn btn-default btn-xs" value="Uredi" onclick='showModal("@Url.Action("Edit","Aktivnosti",new { id = item.Id_aktivnost})")' />
-                        <input type="button" class="btn btn-danger btn-xs" value="Briši" onclick='showModal("@Url.Action("Delete","Aktivnosti",new { id = item.Id_aktivnost})")' />
+						<button class="btn btn-default btn-xs" Briši" onclick ="location.href='@Url.Action("Edit", "CompanyData",new { id = item.id_poduzece})'">Uredi</button>
+						<button class="btn btn-danger btn-xs" onclick ="location.href='@Url.Action("Delete", "CompanyData",new { id = item.id_poduzece})'">Briši</button>
                     </div>
                 </td>
             </tr>
-        }
+				i++;
+			}
+		}
     </tbody>
 </table>

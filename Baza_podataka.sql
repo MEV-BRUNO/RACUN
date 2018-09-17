@@ -31,7 +31,8 @@ CREATE TABLE `korisnik` (
   `aktivan` TINYINT(1) DEFAULT NULL,
   `aktiv_link` CHAR(20) DEFAULT NULL,
   `id_poduzece` INT(11) NOT NULL,
-  PRIMARY KEY (`id_korisnik`)
+  PRIMARY KEY (`id_korisnik`),
+  FOREIGN KEY (id_poduzece) REFERENCES poduzece(id_poduzece) ON UPDATE CASCADE
 ) ENGINE=INNODB DEFAULT CHARSET=utf8;
 
 /*Data for the table `korisnik` */
