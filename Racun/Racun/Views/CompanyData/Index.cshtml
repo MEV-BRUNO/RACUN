@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Racun.Models.Company
+@{
     ViewBag.Title = "Poduzeca";
 }
 
@@ -6,3 +7,39 @@
     <h1>Pregled upisanih poduzeća, uređivanje upisanih poduzeća i upis novih.</h1>
 </div>
 
+<table class="table table-bordered table-hover" id="dataTable">
+    <thead>
+        <tr>
+            <td class="col-lg-1">#</td>
+            <td class="col-lg-9">Naziv poduzeća</td>
+            <td class="col-lg-9">Adresa</td>
+            <td class="col-lg-9">Grad</td>
+            <td class="col-lg-9">Država</td>
+            <td class="col-lg-9">Telefon</td>
+            <td class="col-lg-9">Mobitel</td>
+            <td class="col-lg-9">E-mail adresa</td>
+            <td class="col-lg-9">OIB</td>
+            <td class="col-lg-9">Odgovorna osoba</td>
+            <td class="col-lg-9">Žiro račun</td>
+            <td class="col-lg-9">Banka</td>
+            <td class="col-lg-9">PDV</td>
+            <td class="col-lg-9">Bilješka</td>
+            <td class="col-lg-9">Pečat</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Company)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Red_br)</td>
+                <td>@Html.DisplayFor(modelItem => item.Naziv)</td>
+                <td>
+                    <div class="pull-right">
+                        <input type="button" class="btn btn-default btn-xs" value="Uredi" onclick='showModal("@Url.Action("Edit","Aktivnosti",new { id = item.Id_aktivnost})")' />
+                        <input type="button" class="btn btn-danger btn-xs" value="Briši" onclick='showModal("@Url.Action("Delete","Aktivnosti",new { id = item.Id_aktivnost})")' />
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
