@@ -60,7 +60,7 @@ namespace Racun.Controllers
 
             Session["user_id"] = user.id_korisnik;
             Session.Timeout = 120;
-            return RedirectToAction("Edit", "CompanyData", new { id = user.id_poduzece });
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Register()
