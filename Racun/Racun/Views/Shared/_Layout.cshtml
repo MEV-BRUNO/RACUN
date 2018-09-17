@@ -21,8 +21,10 @@
             </div>
             <div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Poduzeća", "Index", "CompanyData")</li>
-					<li>@Html.ActionLink("Računi", "Contact", "Index")</li>
+					@if (MySession.CurrentUser != null)
+					{
+						<li>@Html.ActionLink("Poduzeća", "Index", "CompanyData")</li>
+					}
 					<li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
 				</ul>
                 <ul class="nav navbar-nav navbar-right">

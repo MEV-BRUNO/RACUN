@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Web.Mvc;
 using Racun.DbCtx;
@@ -47,14 +49,17 @@ namespace Racun.Controllers
             };
 
             _dbContext.companies.Add(company);
-            if (_dbContext.SaveChanges() > 0)
+            try
             {
-                return View("Index");
+                _dbContext.SaveChanges();
             }
-            else
+            catch
             {
+                TempData["msg"] = "<script>alert('" + "Poduzeće s ovim emailom već postoji!" + "');</script>";
+                company.pdv = company.pdv * 100;
                 return View(company);
             }
+            return RedirectToAction("Index");
         }
 
         // GET
@@ -85,7 +90,15 @@ namespace Racun.Controllers
             company.pdv = float.Parse(collection["tax"]) / 100;
             company.biljeska = collection["note"];
             company.pecat = collection["stamp"];
-            _dbContext.SaveChanges();
+            try
+            {
+                _dbContext.SaveChanges();
+            }
+            catch
+            {
+                TempData["msg"] = "<script>alert('" + "Poduzeće s ovim emailom već postoji!" + "');</script>";
+                return View(company);
+            }
 
             return RedirectToAction("Index");
         }
@@ -102,9 +115,7 @@ namespace Racun.Controllers
             }
             catch
             {
-            }
-            finally
-            {
+                TempData["msg"] = "<script>alert('" + "Nije moguće obrisati poduzeće!" + "');</script>";
             }
             return RedirectToAction("Index");
         }
