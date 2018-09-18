@@ -1,0 +1,66 @@
+﻿@model Racun.Models.Company
+@{
+	ViewBag.Title = "Edit";
+}
+@Html.Raw(TempData["msg"])
+<div class="form-page">
+	<h2 class="page-title"><span class="title-red">UREDI PODATKE PODUZEĆA</span></h2>
+	<h3><span class="label label-primary">Podaci</span></h3>
+	<form action="" method="post">
+		@if (!ViewData.ModelState.IsValid)
+		{
+			<div class="alert alert-danger">
+				@Html.ValidationSummary(false)
+			</div>
+		}
+		<div class="form-group">
+			<input type="hidden" class="form-control" name="id_company" value="@Model.id_poduzece" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="companyName" placeholder="Naziv poduzeća" value="@Model.naziv" required="required">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="address" placeholder="Adresa" value="@Model.adresa">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="town" placeholder="Grad" value="@Model.grad">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="country" placeholder="Država" value="@Model.drzava">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="phone" placeholder="Telefon" value="@Model.tel">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="cellphone" placeholder="Mobitel" value="@Model.mob">
+		</div>
+		<div class="form-group">
+			<input type="email" class="form-control" name="email" placeholder="E-mail adresa" value="@Model.email">
+		</div>
+		<div class="form-group">
+			<input type="number" class="form-control" name="oib" placeholder="OIB" value="@Model.oib">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="personInCharge" placeholder="Odgovorna osoba" value="@Model.odgovorna_osoba">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="bankAccount" placeholder="Žiro račun" value="@Model.ziro_racun">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="bank" placeholder="Banka" value="@Model.banka">
+		</div>
+		<div class="form-group">
+			<input type="number" class="form-control" name="tax" placeholder="PDV" value="@(Model.pdv * 100)">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="note" placeholder="Bilješka" value="@Model.biljeska">
+		</div>
+		<div class="form-group">
+			<input type="text" class="form-control" name="stamp" placeholder="Pečat" value="@Model.pecat">
+		</div>
+
+
+		<button type="submit" class="btn btn-danger">Spremi</button>
+
+	</form>
+</div>

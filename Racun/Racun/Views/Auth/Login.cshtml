@@ -5,13 +5,19 @@
 <div class="form-page">
     <h2 class="page-title"><span class="title-red">PAUP</span> <span class="title-blue">projekt</span></h2>
     <h3><span class="label label-primary">Vaše korisničko ime i lozinka</span></h3>
-    <form>
+    <form action="" method="post">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                @Html.ValidationSummary(false)
+            </div>
+        }
         <div class="form-group">
 
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Korisničko ime">
+            <input type="email" class="form-control" name="email" placeholder="E-mail adresa">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Lozinka">
+            <input type="password" class="form-control" name="password" placeholder="Lozinka">
         </div>
 
 

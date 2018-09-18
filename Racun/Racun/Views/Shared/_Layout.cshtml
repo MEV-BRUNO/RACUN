@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Racun.Controllers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -16,16 +17,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Početna", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+				<ul class="nav navbar-nav">
+					@if (MySession.CurrentUser != null)
+					{
+						<li>@Html.ActionLink("Poduzeća", "Index", "CompanyData")</li>
+					}
+					<li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+				</ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li>@Html.ActionLink("Login", "Login", "Auth")</li>
+                    @if (MySession.CurrentUser == null)
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Auth")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink(@MySession.CurrentUser.ime_prezime, "Edit", "CompanyData") </li>
+                    }
+                    
                 </ul>
             </div>
            
